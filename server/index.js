@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import userRouter from './routers/userRouter.js'
 import authRouter from './routers/authRouter.js'
+import listingRouter from './routers/listingRouter.js'
 import cookieParser from 'cookie-parser'
 dotenv.config()
 const app = express();
@@ -23,6 +24,7 @@ app.listen(PORT, ()=>{
 
 app.use('/api/user', userRouter)
 app.use('/api/auth', authRouter)
+app.use('/api/listing', listingRouter)
 
 // Creating a middleware to handle the errors
 
