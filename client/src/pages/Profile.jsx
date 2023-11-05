@@ -215,7 +215,7 @@ const Profile = () => {
                 className='h-16 w-16 object-contain'
                 />
               </Link>
-              <Link className='felx-1 text-slate-700 font-semibold hover:underline truncate' to={`/listing/${listing._id}`}>
+              <Link className='felx-1 text-slate-700 font-semibold hover:underline truncate' to={`/show-listing/${listing._id}`}>
                 <p>{listing.name}</p>
               </Link>
               <div className='flex flex-col items-center'>
