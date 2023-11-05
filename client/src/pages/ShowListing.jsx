@@ -5,16 +5,18 @@ import SwiperCore from 'swiper';
 import { Navigation } from "swiper/modules";
 import 'swiper/css/bundle';
 import {FaBath, FaBed, FaChair, FaMapMarkedAlt, FaParking, FaShare} from 'react-icons/fa';
+import {useSelector} from 'react-redux'
+import Contact from "../components/Contact";
 
 const ShowListing = () => {
+  const {currentUser} = useSelector(state => state.user);
   SwiperCore.use([Navigation])
   const [isListing, setIsListing] = useState(null);
   const params = useParams();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
-
-  console.log(isListing)
+  const [contactLandlord, setContactLandlord] = useState(false);
 
   const listingId = params.listingId;
 
@@ -122,6 +124,14 @@ const ShowListing = () => {
                       {isListing.furnished ? 'Furnished' : 'Unfurnished'}
                     </li>
                   </ul>
+                  {
+                    currentUser && isListing.userRef !== currentUser._id && !contactLandlord && (
+                      <button onClick={()=> setContactLandlord(true)} className="bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3">Contact landlord</button>
+                    )
+                  }
+                  {
+                    contactLandlord && <Contact listing={isListing}/>
+                  }
                 </div>
         </>
       }
