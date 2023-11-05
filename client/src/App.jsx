@@ -15,6 +15,7 @@ function App() {
     <BrowserRouter>
     <Header/>
       <Routes>
+        {/* <Route path='/*' element={<SignIn/>}></Route> */}
         <Route path='/' element={<Home/>}></Route>
         <Route path='/sign-in' element={<SignIn/>}></Route>
         <Route path='/sign-up' element={<SignUp/>}></Route>
@@ -22,6 +23,7 @@ function App() {
         <Route element={<PrivateRoute/>}>
           <Route path='/profile' element={<Profile/>}></Route>
           <Route path='/create-listing' element={<CreateListing/>}></Route>
+          {/* <Route path='/listing/:id' element={<CreateListing/>}></Route> */}
         </Route>
       </Routes>
     </BrowserRouter>

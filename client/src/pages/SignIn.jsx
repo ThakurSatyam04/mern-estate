@@ -31,14 +31,12 @@ const SignIn = () => {
         });
         const data = await res.json();
         if(data.success === false){
-          console.log("Error is here")
           dispatch(signInFailure(data.message))
           return;
         }
         dispatch(signInSuccess(data))
         navigate('/')
     } catch (error) {
-      console.log("Error is here2")
       dispatch(signInFailure(error.message))
     }
   }
@@ -48,6 +46,7 @@ const SignIn = () => {
       <h2 className="font-semibold text-center my-7 text-3xl">Sign in</h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input 
+          required
           type="email" 
           placeholder="email"
           id="email"
@@ -55,6 +54,7 @@ const SignIn = () => {
           onChange={handleChange}
         />
         <input 
+          required
           type="password" 
           placeholder="password"
           id="password"
