@@ -57,17 +57,18 @@ const ShowListing = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="fixed top-[13%] right-[3%] z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-slate-100 cursor-pointer">
+          <div 
+          className="fixed top-[13%] right-[3%] z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-slate-100 cursor-pointer"
+          onClick={()=>{
+            navigator.clipboard.writeText(window.location.href);
+            setIsCopied(true);
+            setTimeout(()=>{
+              setIsCopied(false);
+            },2000)
+          }}>
               <FaShare 
                 className="text-slate-500"
-                onClick={()=>{
-                  console.log("clicked")
-                  navigator.clipboard.writeText(window.location.href);
-                  setIsCopied(true);
-                  setTimeout(()=>{
-                    setIsCopied(false);
-                  },2000)
-                }}
+                
                 />
                 </div>
                 {isCopied && (
