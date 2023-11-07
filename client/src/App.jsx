@@ -10,6 +10,7 @@ import PrivateRoute from './components/PrivateRoute'
 import CreateListing from './pages/CreateListing'
 import UpdateListing from './pages/UpdateListing'
 import ShowListing from './pages/ShowListing'
+import Search from './pages/Search'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/sign-in' element={<SignIn/>}></Route>
         <Route path='/sign-up' element={<SignUp/>}></Route>
         <Route path='/about' element={<About/>}></Route>
+        <Route path='/search' element={<Search/>}></Route>
         <Route element={<PrivateRoute/>}>
           <Route path='/profile' element={<Profile/>}></Route>
           <Route path='/create-listing' element={<CreateListing/>}></Route>
