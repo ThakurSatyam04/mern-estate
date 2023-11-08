@@ -5,6 +5,8 @@ import userRouter from './routers/userRouter.js'
 import authRouter from './routers/authRouter.js'
 import listingRouter from './routers/listingRouter.js'
 import cookieParser from 'cookie-parser'
+import path from 'path';
+
 dotenv.config()
 const app = express();
 app.use(express.json());
@@ -16,6 +18,8 @@ mongoose.connect(process.env.MONGO_URL).then(()=>{
     console.log("Error in connecting MongoDb",error)
 })
 
+const _dirname = path.resolve();
+
 const PORT = process.env.PORT || 3000 
 
 app.listen(PORT, ()=>{
@@ -25,6 +29,12 @@ app.listen(PORT, ()=>{
 app.use('/api/user', userRouter)
 app.use('/api/auth', authRouter)
 app.use('/api/listing', listingRouter)
+
+app.use(express.static(path.join(_dirname, '/client/dist')));
+
+app.get('*', (req,res)=> {
+    res.sendFile(path.join(_dirname, 'client' , 'dist', 'index.html'))
+})
 
 // Creating a middleware to handle the errors
 
