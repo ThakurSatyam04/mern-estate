@@ -4,7 +4,7 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import SwiperCore from 'swiper';
 import 'swiper/css/bundle';
-import ListingCard from '../components/listingCard';
+import ListingCard from '../components/ListingCard';
 
 const Home = () => {
   const [offerListings, setOfferListings] = useState([]);
