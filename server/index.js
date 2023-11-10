@@ -5,14 +5,9 @@ import userRouter from './routers/userRouter.js'
 import authRouter from './routers/authRouter.js'
 import listingRouter from './routers/listingRouter.js'
 import cookieParser from 'cookie-parser'
-import cors from 'cors'
 import path from 'path';
 
 dotenv.config()
-const app = express();
-app.use(express.json());
-app.use(cookieParser());
-app.use(cors());
 
 mongoose.connect(process.env.MONGO_URL).then(()=>{
     console.log("MongoDb connected successfully")
@@ -22,12 +17,14 @@ mongoose.connect(process.env.MONGO_URL).then(()=>{
 
 
 const __dirname = path.resolve();
+const app = express();
+app.use(express.json());
+app.use(cookieParser());
 
-const PORT = process.env.PORT || 3000 
 
-app.listen(PORT, ()=>{
-    console.log(`Server is running at port ${PORT}`)
-})
+app.listen(8000, () => {
+    console.log('Server is running on port 8000!');
+  });
 
 app.use('/api/user', userRouter)
 app.use('/api/auth', authRouter)
