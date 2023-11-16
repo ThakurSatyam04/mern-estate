@@ -6,6 +6,7 @@ import authRouter from './routers/authRouter.js'
 import listingRouter from './routers/listingRouter.js'
 import cookieParser from 'cookie-parser'
 import path from 'path';
+import cors from 'cors';
 
 dotenv.config()
 
@@ -20,6 +21,7 @@ const __dirname = path.resolve();
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors())
 
 
 app.listen(8000, () => {
