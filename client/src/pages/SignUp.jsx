@@ -37,6 +37,7 @@ const SignUp = () => {
         navigate('/sign-in')
     } catch (error) {
       setLoading(false);
+      console.log("Error is comming from this")
       setError(error.message)
     }
   }
